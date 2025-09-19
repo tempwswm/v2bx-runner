@@ -1,5 +1,5 @@
 FROM alpine AS builder
-ARG V2BX_VERSION=0.3.8
+ARG V2BX_VERSION=v0.3.8
 RUN echo https://github.com/wyx2685/V2bX/releases/download/$V2BX_VERSION/V2bX-linux-64.zip &&\
 wget https://github.com/wyx2685/V2bX/releases/download/$V2BX_VERSION/V2bX-linux-64.zip &&\
 unzip V2bX-linux-64.zip -d /etc/V2bX
