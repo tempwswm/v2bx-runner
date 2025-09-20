@@ -1,5 +1,6 @@
 import asyncio
 import os
+import platform
 import subprocess
 
 import httpx
@@ -31,10 +32,11 @@ async def download_V2bX_file(name, parm=None):
 async def main():
     response = httpx.get("https://ifconfig.me/ip")
     ip = response.text
+    host_name = platform.node().split("-")[-1]
     print(f"当前公网IP：{response.text}")
     while True:
         tasks = [
-            download_V2bX_file("config.json", f"ip={ip}"),
+            download_V2bX_file("config.json", f"ip={ip}&host_name={host_name}"),
             download_V2bX_file("custom_outbound.json"),
             download_V2bX_file("route.json"),
         ]
